@@ -22,5 +22,26 @@ header {
     margin: 0px;
 }
 a {
+    color: aqua;
     text-decoration: none; 
+}
+
+a:link {
+    color: greenyellow;
+    text-decoration:rgb(2, 0, 128);
+}
+
+a:visited {
+    color: purple;
+    font-style: inherit;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+a:active {
+    color:black;
+    opacity: 0.3;
 }
