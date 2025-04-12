@@ -8,12 +8,18 @@ main {
     background-color: lightpink;
     color: rgb(112, 61, 61);
     font-family: Helvetica;
-    margin: 5px;
+    margin: 10px 20px 68px;
 }
 footer {
-    background-color: lightgoldenrodyellow;
-    color: rgb(2, 0, 128);
+    background-color: rgb(127, 243, 135);
+    color: rgb(4, 4, 16);
     font-family: sans-serif;
+    font-size: 16pt;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 header {
     background-color: darkmagenta;
