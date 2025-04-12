@@ -47,3 +47,15 @@ a:active {
     color:black;
     opacity: 0.3;
 }
+
+div.menu {
+    border: 7px solid #f06bcb80;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.menu:hover {
+    background-color: #6fa7ec30;
+    box-shadow: 0 0 15px #00000030;
+}
