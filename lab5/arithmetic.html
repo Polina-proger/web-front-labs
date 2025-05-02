@@ -9,25 +9,52 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <script>
-        function showSum() {
-            let inputA = document.getElementById('numberA')
-            let inputB = document.getElementById('numberB')
+        function calculate(operation) {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
 
-            let a = parseInt(inputA.value)
-            let b = parseInt(inputB.value)
-            let result = a + b;
-            alert('Сумма ' + a + ' и ' + b + ' равна' + result);
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert('Пожалуйста, введите числа!');
+                return;
+            }
+
+            let result;
+            let operationSymbol;
+
+            switch (operation) {
+                case 'sum':
+                    result = a + b;
+                    operationSymbol = '+';
+                    break;
+                case 'subtract':
+                    result = a - b;
+                    operationSymbol = '-';
+                    break;
+                case 'multiply':
+                    result = a * b;
+                    operationSymbol = '*';
+                    break;
+                default:
+                    alert('Неизвестная операция!');
+                    return;
+            }
+
+            alert(a + ' ' + operationSymbol + ' ' + b + ' = ' + result);
         }
+
         function showAuthor() {
             let author = 'Автор страницы: \nСелихова Полина Сергеевна';
             alert(author);
         }
+
         function showGreeting() {
-        let greeting = "Приветствую вас на моей странице!\n\n";
-        let motto = "Делай то, что любишь, и люби то, что делаешь!";
-        alert(greeting + motto);
+            let greeting = "Приветствую вас на моей странице!\n\n";
+            let motto = "Делай то, что любишь, и люби то, что делаешь!";
+            alert(greeting + motto);
         }
-  </script>
     </script>
     <style>
         .message {
@@ -40,6 +67,7 @@
             text-align: center;
             padding-top: 30px;
             font-size: 20px;
+            margin-bottom: 10px; /* Добавлено для отступов между блоками */
         }
         .header {
             cursor: pointer; 
@@ -48,13 +76,15 @@
 </head>
 <body>
     <header onclick="showAuthor()">
-        НГТУ, ФБ, Лаораторная работа 5
+        <h1>НГТУ, ФБ, Лабораторная работа 5</h1>
     </header>
 
     <main>
         <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
-        <div class="message" onclick="showSum()">Найти сумму чисел</div>
+        <div class="message" onclick="calculate('sum')">Найти сумму чисел</div>
+        <div class="message" onclick="calculate('subtract')">Найти разность чисел</div>
+        <div class="message" onclick="calculate('multiply')">Найти произведение чисел</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
 
