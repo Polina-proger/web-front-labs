@@ -9,41 +9,75 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <script>
-        function calculate(operation) {
+        function showSum() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a + b;
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+        function showSub() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a - b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+        function showMul() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a * b;
+            alert('Произведение ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+        function showDiv() {
             let inputA = document.getElementById('numberA');
             let inputB = document.getElementById('numberB');
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
 
-            if (isNaN(a) || isNaN(b)) {
-                alert('Пожалуйста, введите числа!');
+            if (b === 0) {
+                alert('На ноль делить нельзя!');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
                 return;
             }
 
-            let result;
-            let operationSymbol;
-
-            switch (operation) {
-                case 'sum':
-                    result = a + b;
-                    operationSymbol = '+';
-                    break;
-                case 'subtract':
-                    result = a - b;
-                    operationSymbol = '-';
-                    break;
-                case 'multiply':
-                    result = a * b;
-                    operationSymbol = '*';
-                    break;
-                default:
-                    alert('Неизвестная операция!');
-                    return;
+            if(isNaN(a)) {
+                alert('введите числовое значение в первое поле');
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
             }
 
-            alert(a + ' ' + operationSymbol + ' ' + b + ' = ' + result);
+            if(isNaN(b)) {
+                alert('введите числовое значение в первое поле');
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+
+            let result = a / b;
+            alert(a + ' / ' + b + ' = ' + result);
         }
+
 
         function showAuthor() {
             let author = 'Автор страницы: \nСелихова Полина Сергеевна';
@@ -67,7 +101,7 @@
             text-align: center;
             padding-top: 30px;
             font-size: 20px;
-            margin-bottom: 10px; /* Добавлено для отступов между блоками */
+            margin-bottom: 10px;
         }
         .header {
             cursor: pointer; 
@@ -82,9 +116,11 @@
     <main>
         <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
-        <div class="message" onclick="calculate('sum')">Найти сумму чисел</div>
-        <div class="message" onclick="calculate('subtract')">Найти разность чисел</div>
-        <div class="message" onclick="calculate('multiply')">Найти произведение чисел</div>
+        <div class="message" onclick="showSum()">Найти сумму чисел</div>
+        <div class="message" onclick="showSub()">Найти разность чисел</div>
+        <div class="message" onclick="showMul()">Найти произведение чисел</div>
+        <div class="message" onclick="showDiv()">Найти частное чисел</div>
+        <div class="message" onclick="showDiv()">Найти отношение чисел</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
 
