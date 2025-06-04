@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селихова Полина Сергеевна. Лабораторная 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .tag {
+            position: absolute;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, text-shadow 0.3s;
+            z-index: 0;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+        }
+        .tag:hover {
+            transform: scale(2);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+            animation-play-state: paused;
+        }
+
+        .t1  { font-size: 160px; color: black; animation-name: move1; }
+        .t2  { font-size: 150px; color: blue; animation-name: move2; }
+        .t3  { font-size: 40px; color: red; animation-name: move3; }
+        .t4  { font-size: 60px; color: yellow; animation-name: move4; }
+        .t5  { font-size: 50px; color: blueviolet; animation-name: move5; }
+        .t6  { font-size: 70px; color: yellowgreen; animation-name: move6; }
+        .t7  { font-size: 80px; color: gray; animation-name: move7; }
+        .t8  { font-size: 90px; color: sandybrown; animation-name: move8; }
+        .t9  { font-size: 100px; color: darkred; animation-name: move9; }
+        .t10 { font-size: 110px; color: palevioletred; animation-name: move10; }
+        .t11 { font-size: 120px; color: orchid; animation-name: move11; }
+        .t12 { font-size: 130px; color: olive; animation-name: move12; }
+        .t13 { font-size: 140px; color: orangered; animation-name: move13; }
+        .t14 { font-size: 30px; color: orange; animation-name: move14; }
+        .t15 { font-size: 20px; color: blanchedalmond; animation-name: move15; }
+        
+        @keyframes move1  { 0% { top:10%; left:15%; } 100% { top:25%; left:30%; } }
+        @keyframes move2  { 0% { top:20%; left:40%; } 100% { top:35%; left:60%; } }
+        @keyframes move3  { 0% { top:30%; left:50%; } 100% { top:45%; left:70%; } }
+        @keyframes move4  { 0% { top:40%; left:65%; } 100% { top:55%; left:50%; } }
+        @keyframes move5  { 0% { top:50%; left:30%; } 100% { top:65%; left:40%; } }
+        @keyframes move6  { 0% { top:60%; left:45%; } 100% { top:75%; left:55%; } }
+        @keyframes move7  { 0% { top:70%; left:60%; } 100% { top:55%; left:80%; } }
+        @keyframes move8  { 0% { top:28%; left:55%; } 100% { top:42%; left:75%; } }
+        @keyframes move9  { 0% { top:33%; left:25%; } 100% { top:50%; left:15%; } }
+        @keyframes move10 { 0% { top:38%; left:40%; } 100% { top:53%; left:45%; } }
+        @keyframes move11 { 0% { top:43%; left:55%; } 100% { top:60%; left:70%; } }
+        @keyframes move12 { 0% { top:48%; left:70%; } 100% { top:62%; left:85%; } }
+        @keyframes move13 { 0% { top:53%; left:35%; } 100% { top:66%; left:20%; } }
+        @keyframes move14 { 0% { top:58%; left:50%; } 100% { top:75%; left:65%; } }
+        @keyframes move15 { 0% { top:63%; left:65%; } 100% { top:78%; left:50%; } }        
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лаораторная работа 4
+    </header>
+
+    <main>
+        <div class="tag-cloud">
+            <div class="tag t1">black</div>
+            <div class="tag t2">blue</div>
+            <div class="tag t3">red</div>
+            <div class="tag t4">yellow</div>
+            <div class="tag t5">blueviolet</div>
+            <div class="tag t6">yellowgreen</div>
+            <div class="tag t7">gray</div>
+            <div class="tag t8">sandybrown</div>
+            <div class="tag t9">darkred</div>
+            <div class="tag t10">palevioletred</div>
+            <div class="tag t11">orchid</div>
+            <div class="tag t12">olive</div>
+            <div class="tag t13">orangered</div>
+            <div class="tag t14">orange</div>
+            <div class="tag t15">blanchedalmond</div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Полина Селихова, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>

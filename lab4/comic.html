@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селихова Полина Сергеевна. Лабораторная 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .open {
+            position: relative;
+            }
+
+        .art {
+            width: 100%;
+            display: block;
+        }
+
+        .first, .second, .third, .fourth {
+            opacity: 0;
+            transition: opacity 1s ease;
+            pointer-events: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 50%;
+            z-index: 2; 
+        }
+
+        .first {
+            height: 15px;
+            width: 30px;
+            left: 900px;
+            top: 530px;
+            transition-delay: 1s;
+        }
+
+        .second {
+            height: 34px;
+            width: 65px;
+            left: 950px;
+            top: 510px;
+            transition-delay: 2s;
+        }
+
+        .third {
+            height: 40px;
+            width: 80px;
+            left: 1020px;
+            top: 490px;
+            transition-delay: 3s;
+        }
+
+        .fourth {
+            height: 80px;
+            width: 180px;
+            left: 1100px;
+            top: 445px;
+            text-align: center;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding-top: 20px;
+            transition-delay: 4s;
+        }
+
+        .open:hover .first,
+        .open:hover .second,
+        .open:hover .third,
+        .open:hover .fourth {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лаораторная работа 4
+    </header>
+
+    <main>
+        <div class="open">
+            <img class="art" src="art.jpg">
+            <div class="first"></div>
+            <div class="second"></div>
+            <div class="third"></div>
+            <div class="fourth">CSS не язык программирования??</div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Полина Селихова, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>

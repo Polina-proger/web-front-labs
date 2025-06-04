@@ -1,0 +1,66 @@
+body {
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 0px;
+}
+main {
+    color: rgb(112, 61, 61);
+    font-family: Helvetica;
+    margin: 10px 20px 68px;
+}
+footer {
+    background-color: rgb(127, 243, 135);
+    color: rgb(4, 4, 16);
+    font-family: sans-serif;
+    font-size: 16pt;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+header {
+    background-color: darkmagenta;
+    color: lightskyblue;
+    font-family: Arial;
+    margin: 0px;
+}
+a {
+    color: aqua;
+    text-decoration: none; 
+    transition: 1s 2s;
+}
+
+a:link {
+    color: greenyellow;
+    text-decoration:rgb(2, 0, 128);
+}
+
+a:visited {
+    color: purple;
+    font-style: inherit;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+a:active {
+    color:black;
+    opacity: 0.3;
+}
+
+div.menu {
+    border: 7px solid #f06bcb80;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.menu:hover {
+    background-color: #6fa7ec30;
+    box-shadow: 0 0 15px #00000030;
+}
