@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селихова Полина Сергеевна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            height: 250px; /* Уменьшил высоту контейнера */
+            margin: 30px 0;
+            gap: 5px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            width: 20px; /* Уменьшил ширину столбцов */
+        }
+        .day-label {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .temp-bar {
+            width: 100%;
+            position: relative;
+        }
+        .max-bar {
+            background-color: #ff6b6b;
+            border-radius: 3px 3px 0 0;
+        }
+        .min-bar {
+            background-color: #4d96ff;
+            border-radius: 0 0 3px 3px;
+            margin-top: 2px;
+        }
+        .selected .max-bar {
+            background-color: #ff0000;
+            box-shadow: 0 0 5px #ff0000;
+        }
+        .selected .min-bar {
+            background-color: #0051ff;
+            box-shadow: 0 0 5px #0051ff;
+        }
+        .day-info {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            max-width: 300px;
+        }
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            width: 60px;
+            font-size: 16px;
+        }
+        h1 {
+            color: #333;
+            font-size: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .legend {
+            display: flex;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <h1>Температуры за месяц</h1>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #ff6b6b;"></div>
+                <span>Макс. температура</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #4d96ff;"></div>
+                <span>Мин. температура</span>
+            </div>
+        </div>
+        
+        <div class="chart-container" id="chart"></div>
+        
+        <div>
+            <label for="day-input">Введите номер дня (1-30): </label>
+            <input type="number" id="day-input" min="1" max="30" value="1">
+        </div>
+        
+        <div class="day-info" id="day-info">
+            <p>День: <span id="info-day">1</span></p>
+            <p>Максимальная температура: <span id="info-max">0</span>°C</p>
+            <p>Минимальная температура: <span id="info-min">0</span>°C</p>
+        </div>
+        
+        <script>
+            // Генерация случайных температур (апрель - весенние температуры)
+            function generateTemperatures() {
+                const temps = [];
+                for (let i = 0; i < 30; i++) {
+                    const maxTemp = Math.floor(Math.random() * 15) + 15; // от 15 до 30°C
+                    const minTemp = maxTemp - Math.floor(Math.random() * 10 + 5); // на 5-15 градусов ниже максимума
+                    temps.push({ day: i+1, max: maxTemp, min: minTemp });
+                }
+                return temps;
+            }
+            
+            // Построение диаграммы
+            function buildChart(temperatures) {
+                const chart = document.getElementById('chart');
+                chart.innerHTML = '';
+                
+                // Находим максимальное и минимальное значения для масштабирования
+                const maxTemp = Math.max(...temperatures.map(t => t.max));
+                const minTemp = Math.min(...temperatures.map(t => t.min));
+                const tempRange = maxTemp - minTemp;
+                const chartHeight = 200; // Уменьшил высоту для диаграммы
+                
+                temperatures.forEach(temp => {
+                    const barContainer = document.createElement('div');
+                    barContainer.className = 'bar-container';
+                    barContainer.dataset.day = temp.day;
+                    
+                    // Вычисляем высоты столбцов (уменьшенный масштаб)
+                    const maxHeight = ((temp.max - minTemp) / tempRange) * chartHeight * 0.7;
+                    const minHeight = ((temp.min - minTemp) / tempRange) * chartHeight * 0.7;
+                    
+                    // Создаем столбцы
+                    const maxBar = document.createElement('div');
+                    maxBar.className = 'temp-bar max-bar';
+                    maxBar.style.height = `${maxHeight}px`;
+                    maxBar.title = `День ${temp.day}: Макс ${temp.max}°C`;
+                    
+                    const minBar = document.createElement('div');
+                    minBar.className = 'temp-bar min-bar';
+                    minBar.style.height = `${minHeight}px`;
+                    minBar.title = `День ${temp.day}: Мин ${temp.min}°C`;
+                    
+                    // Создаем подпись дня
+                    const dayLabel = document.createElement('div');
+                    dayLabel.className = 'day-label';
+                    dayLabel.textContent = temp.day;
+                    
+                    // Добавляем элементы в контейнер
+                    barContainer.appendChild(maxBar);
+                    barContainer.appendChild(minBar);
+                    barContainer.appendChild(dayLabel);
+                    
+                    // Добавляем контейнер в диаграмму
+                    chart.appendChild(barContainer);
+                });
+                
+                // Показываем информацию для первого дня по умолчанию
+                showDayInfo(temperatures[0]);
+                document.querySelector(`.bar-container[data-day="1"]`).classList.add('selected');
+            }
+            
+            // Показать информацию о дне
+            function showDayInfo(tempData) {
+                document.getElementById('info-day').textContent = tempData.day;
+                document.getElementById('info-max').textContent = tempData.max;
+                document.getElementById('info-min').textContent = tempData.min;
+            }
+            
+            // Обработчик ввода дня
+            function setupDayInput(temperatures) {
+                const dayInput = document.getElementById('day-input');
+                
+                dayInput.addEventListener('input', function() {
+                    const day = parseInt(this.value);
+                    
+                    // Проверяем корректность ввода
+                    if (day < 1) this.value = 1;
+                    if (day > 30) this.value = 30;
+                    
+                    const validDay = parseInt(this.value);
+                    
+                    // Сбрасываем выделение всех столбцов
+                    document.querySelectorAll('.bar-container').forEach(bar => {
+                        bar.classList.remove('selected');
+                    });
+                    
+                    // Находим нужный день
+                    const tempData = temperatures.find(t => t.day === validDay);
+                    
+                    if (tempData) {
+                        // Выделяем выбранный столбец
+                        const selectedBar = document.querySelector(`.bar-container[data-day="${validDay}"]`);
+                        if (selectedBar) {
+                            selectedBar.classList.add('selected');
+                        }
+                        
+                        // Показываем информацию о дне
+                        showDayInfo(tempData);
+                    }
+                });
+            }
+            
+            // Инициализация
+            document.addEventListener('DOMContentLoaded', function() {
+                const temperatures = generateTemperatures();
+                buildChart(temperatures);
+                setupDayInput(temperatures);
+            });
+        </script>
+    </main>
+
+    <footer>
+        &copy; Полина Селихова, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
