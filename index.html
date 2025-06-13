@@ -4,61 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Селихова Полина Сергеевна. Лабораторные работы по WEB-программированию</title>
-    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .menu {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        ol {
+            list-style-type: none;
+            padding: 0;
+            counter-reset: lab-counter;
+        }
+        
+        ol li {
+            counter-increment: lab-counter;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        
+        ol li::before {
+            content: counter(lab-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+        
+        ol li a {
+            text-decoration: none;
+            color: #2c3e50;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        ol li a:hover {
+            color: #3498db;
+            transform: translateX(5px);
+            background-color: #f0f8ff;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+            margin: 20px 0;
+        }
+    </style>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon-16x16.png">
     <link rel="icon" href="favicon-32x32.png">
 </head>
 <body>
     <header>
-        <main>
-            <h1>Лабораторные работы по WEB-программированию</h1>
-            
-            <div class="menu">
+        <h1>Лабораторные работы по WEB-программированию</h1>
+    </header>
+
+    <main>
+        <div class="menu">
             <ol>
                 <li>
                     <a href="lab1/lab1.html">Лабораторная работа 1</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab2/lab2.html">Лабораторная работа 2</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab3/lab3.html">Лабораторная работа 3</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab4/lab4.html">Лабораторная работа 4</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab5/lab5.html">Лабораторная работа 5</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab6/lab6.html">Лабораторная работа 6</a>
                 </li>
-            </ol>
-            <ol>
                 <li>
                     <a href="lab7/lab7.html">Лабораторная работа 7</a>
                 </li>
             </ol>
-            </div>
+        </div>
+    </main>
 
-        </main>
-
-        <footer>
-            <hr>
-            &copy; Селихова Полина, ФБИ-33, 2 курс, 2025
-        </footer>
-        
-    </header>
+    <footer>
+        <hr>
+        &copy; Селихова Полина, ФБИ-33, 2 курс, 2025
+    </footer>
 </body>
 </html>
