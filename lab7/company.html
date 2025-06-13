@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селихова Полина Сергеевна. Котировки акций ЕвроМедЦентр</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script src="stock-data.js"></script>
+    <script>
+        function showStockPrices() {
+            const table = document.getElementById('stock-table');
+            
+            const headerRow = document.createElement('tr');
+            ['Дата', 'Цена, руб', 'Изменение'].forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            for (let i = 0; i < stockData.length; i++) {
+                const row = document.createElement('tr');
+                
+                const dateCell = document.createElement('td');
+                dateCell.textContent = stockData[i].date;
+                row.appendChild(dateCell);
+                
+                const priceCell = document.createElement('td');
+                priceCell.textContent = stockData[i].price.toFixed(2);
+                row.appendChild(priceCell);
+                
+                const changeCell = document.createElement('td');
+                if (i > 0) {
+                    const change = stockData[i].price - stockData[i-1].price;
+                    changeCell.textContent = change.toFixed(2);
+                    
+                    if (change > 0) {
+                        changeCell.classList.add('positive');
+                    } else if (change < 0) {
+                        changeCell.classList.add('negative');
+                    }
+                } else {
+                    changeCell.textContent = '—';
+                }
+                row.appendChild(changeCell);
+                
+                table.appendChild(row);
+            }
+
+            const prices = stockData.map(item => item.price);
+            const sum = prices.reduce((acc, price) => acc + price, 0);
+            const average = sum / prices.length;
+            const min = Math.min(...prices);
+            const max = Math.max(...prices);
+
+            const statsDiv = document.getElementById('stock-stats');
+            statsDiv.innerHTML = `
+                <p>Среднее значение: ${average.toFixed(2)} руб</p>
+                <p>Минимальное значение: ${min.toFixed(2)} руб</p>
+                <p>Максимальное значение: ${max.toFixed(2)} руб</p>
+            `;
+
+            document.getElementById('show-button').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <h1>Котировки акций компании ЕвроМедЦентр</h1>
+        <button id="show-button" onclick="showStockPrices()">Курс акций ЕвроМедЦентр</button>
+        <table id="stock-table"></table>
+        <div id="stock-stats"></div>
+    </main>
+
+    <footer>
+        &copy; Полина Селихова, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
