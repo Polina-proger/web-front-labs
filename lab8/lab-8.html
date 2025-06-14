@@ -66,9 +66,12 @@
                 },
                 edit(id, flower) {
                     let newName = prompt('Введите имя цветка:', flower);
-                    this.flower[id] = newName;
-                }
-            }
+                    this.flower[id] = 'сохранение...';
+                    setTimeout(() => {
+                        this.flowers[id] = newName;
+                    }, 3000);
+                },
+            },
         }).mount('#app');
     </script>
 </body>
