@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селихова Полина Сергеевна. Лабораторная 8</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>"
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 8
+    </header>
+
+    <main>
+        <div id="app">
+            <h1 :title="messageRus">{{ message }}</h1>
+            <p>Счетчик: {{ counter }}</p>
+            <button @click="incCounter" v-if="counter < 10">++</button>
+            <button @click="incCounter" v-if="0 < counter">--</button>
+            <hr>
+
+            <h2>Пользователь:</h2>
+            <div>Имя: {{ user.name }}</div>
+            <div>Возраст: {{ user.age }}</div>
+            <div>Телефон: {{ user.tel }}</div>
+            <hr>
+
+            <h2></h2>
+            <ul>
+                <li v-for="flower in flowers">
+                    {{ flower }}
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Полина Селихова, ФБИ-33, 2 курс, 2025
+    </footer>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello!',
+                    messageRus: 'Привет!',
+                    counter: 1,
+                    user: {
+                        name: 'Вася',
+                        age: '18',
+                        tel: '222-33-44'
+                    },
+                    flowers: ['роза', 'тюльпан', 'маргаритка', 
+                    'георгин', 'одуванчик'],
+                }
+            },
+            methods: {
+                incCounter() {
+                    this.counter++;
+                },
+                decCounter() {
+                    this.counter--;
+                },
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
